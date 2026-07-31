@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deshi Vibes by Sadia</title>
+<style>
+  :root{
+    --maroon:#6e1e1e; --maroon-deep:#4a1414; --clay:#d9a066; --brown:#a85c3a;
+    --green:#2f5233; --cream:#f3e5d0; --cream-2:#faf3e6; --mustard:#e0932a; --rust:#a13328; --ink:#2b1b12;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--cream-2); color:var(--ink); font-family:'Arial', sans-serif; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Arial', sans-serif;}
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  svg{display:inline-block;}
+
+  .leaf-bullet{width:15px !important; height:15px !important; fill:var(--green); vertical-align:-2px; margin:0 6px; flex-shrink:0;}
+
+  .leafvine-divider{width:100%; height:64px; line-height:0; overflow:hidden; background:var(--maroon);}
+  .leafvine-divider svg{width:100%; height:100%; display:block;}
+
+  /* ---------- NAV ---------- */
+  header{position:sticky; top:0; z-index:50; background:var(--maroon); color:var(--cream);}
+  .nav-wrap{max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:10px 24px;}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.03em; text-decoration:none; cursor:pointer; background:none; border:none; color:var(--cream); font-family:'Arial',sans-serif; font-size:1rem; padding:0;}
+  .brand-logo{width:42px; height:42px; border-radius:50%; object-fit:cover; border:2px solid var(--mustard); flex-shrink:0;}
+  nav ul{list-style:none; display:flex; gap:20px; margin:0; padding:0; font-size:.9rem; font-weight:500; align-items:center;}
+  nav ul li a, nav ul li button.navlink{background:none; border:none; text-decoration:none; opacity:.9; transition:opacity .2s; cursor:pointer; font-family:'Arial',sans-serif; font-size:.9rem; font-weight:500; color:var(--cream); padding:0;}
+  nav a:hover, .navlink:hover{opacity:1; color:var(--mustard);}
+  .navlink.page-link{background:var(--mustard) !important; color:var(--maroon-deep) !important; padding:7px 16px !important; border-radius:999px; font-weight:700 !important; opacity:1 !important;}
+  .navlink.page-link:hover{background:var(--cream) !important; color:var(--maroon) !important;}
+  .nav-toggle{display:none;background:none;border:none;color:var(--cream);font-size:1.5rem;cursor:pointer;}
+
+  /* ---------- HERO (photo-forward) ---------- */
+  .hero-photo{
+    position:relative; min-height:560px;
+    display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center;
+    color:var(--cream); padding:70px 24px; overflow:hidden;
+    background:
+      linear-gradient(180deg, rgba(74,20,20,.60), rgba(74,20,20,.88)),
+      repeating-linear-gradient(135deg, #a85c3a 0 20px, #8f4d30 20px 40px);
+  }
+  .hero-photo .photo-note{
+    position:absolute; top:16px; left:16px; z-index:2;
+    background:rgba(0,0,0,.35); color:rgba(255,255,255,.75);
+    font-size:.68rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+    padding:5px 11px; border-radius:999px;
+  }
+  .hero-photo .hero-content{position:relative; z-index:2; max-width:640px;}
+  .hero-badge-logo{width:64px !important; height:64px !important; border-radius:50%; margin:0 auto 18px; object-fit:cover; border:3px solid var(--mustard); box-shadow:0 8px 22px rgba(0,0,0,.35); animation:logoRise 1.1s ease-out both;}
+  @keyframes logoRise{ from{opacity:0; transform:translateY(30px);} to{opacity:1; transform:translateY(0);} }
+  .hero-eyebrow{display:block; font-size:.95rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--mustard); margin-bottom:12px;}
+  .hero-photo h1{font-size:clamp(2.3rem, 6vw, 3.6rem); margin:0 0 30px; font-weight:800; letter-spacing:-.01em; line-height:1.15;}
+  .hero-cta{display:inline-block; padding:16px 40px; border-radius:999px; font-weight:800; font-size:1.05rem; text-decoration:none; background:var(--mustard); color:var(--maroon-deep); box-shadow:0 10px 26px rgba(224,147,42,.4); border:none; cursor:pointer; transition:transform .15s ease;}
+  .hero-cta:hover{transform:translateY(-2px);}
+  .hero-secondary{display:block; margin-top:14px; font-size:.85rem; color:rgba(243,229,208,.8); text-decoration:underline; background:none; border:none; cursor:pointer; font-family:'Arial',sans-serif;}
+  .hero-badge-row{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:24px;}
+  .hero-badge-row .badge-pill{display:flex; align-items:center; gap:5px; background:rgba(243,229,208,.14); border:1.5px solid rgba(243,229,208,.45); color:var(--cream); padding:5px 12px; border-radius:999px; font-size:.72rem; font-weight:600;}
+
+  section{padding:60px 24px;}
+  .section-inner{max-width:1100px; margin:0 auto;}
+  .section-head{text-align:center; margin-bottom:36px;}
+  .section-head .eyebrow{font-size:.85rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--rust); display:block; margin-bottom:6px;}
+  .section-head h2{font-size:clamp(1.7rem,4vw,2.4rem); margin:2px 0 10px; color:var(--maroon-deep);}
+  .section-head p{color:#5c4a3d; max-width:520px; margin:0 auto; font-size:.98rem;}
+  .band-cream{background:var(--cream-2);}
+  .band-tint{background:#f0e2cd;}
+
+  /* ---------- SPECIALTIES ---------- */
+  .specialty-row{display:flex; align-items:stretch; border-radius:24px; overflow:hidden; margin-bottom:40px; box-shadow:0 10px 32px rgba(74,20,20,.16); background:var(--cream); min-height:400px;}
+  .specialty-text{flex:1 1 50%; min-width:0; padding:44px 44px; display:flex; flex-direction:column; justify-content:center; position:relative; z-index:2;}
+  .specialty-text h3{margin:0 0 16px; font-size:1.7rem; color:var(--maroon-deep);}
+  .offer-badge{display:inline-block; background:var(--mustard); color:var(--maroon-deep); font-size:.82rem; font-weight:800; padding:6px 14px; border-radius:999px; margin-bottom:16px; width:fit-content;}
+  .specialty-desc{margin:0 0 24px; font-size:1.05rem; color:#5c4a3d; line-height:1.65;}
+  .specialty-price{font-weight:800; color:var(--rust); font-size:1.55rem;}
+  .specialty-image{flex:1 1 50%; position:relative; min-height:400px; background:repeating-linear-gradient(135deg, var(--clay) 0 16px, #c98f56 16px 32px); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.75); font-size:.85rem; font-weight:700; text-align:center; padding:10px; text-transform:uppercase; letter-spacing:.03em;}
+  .specialty-image::before{content:""; position:absolute; inset:0; background:linear-gradient(to right, var(--cream) 0%, rgba(243,229,208,0) 22%); pointer-events:none;}
+  @media (max-width:680px){
+    .specialty-row{flex-direction:column; min-height:0;}
+    .specialty-image{min-height:260px;}
+    .specialty-text{padding:32px 28px;}
+    .specialty-image::before{background:linear-gradient(to bottom, var(--cream) 0%, rgba(243,229,208,0) 26%);}
+  }
+
+  /* ---------- REVIEWS CAROUSEL ---------- */
+  .reviews-wrap{max-width:620px; margin:0 auto; position:relative;}
+  .review-card{background:var(--cream); border:2px solid var(--brown); border-radius:18px; padding:32px 30px; text-align:center; display:none;}
+  .review-card.active{display:block; animation:reviewIn .5s ease;}
+  @keyframes reviewIn{from{opacity:0; transform:translateY(14px) rotate(-1deg);} to{opacity:1; transform:translateY(0) rotate(0);}}
+  .review-stars{color:var(--mustard); font-size:1.15rem; margin-bottom:12px; letter-spacing:2px;}
+  .review-quote{font-size:1.02rem; color:#3d2c20; line-height:1.65; margin:0 0 16px; font-style:italic;}
+  .review-name{font-weight:800; color:var(--maroon-deep); font-size:.92rem;}
+  .review-controls{display:flex; justify-content:flex-end; align-items:center; gap:10px; margin-top:16px;}
+  .review-dots{margin-right:auto; font-size:.78rem; color:#8a6a52; font-weight:600;}
+  .review-next-btn{background:var(--maroon); color:var(--cream); border:none; width:48px;height:48px; border-radius:50%; font-size:1.3rem; cursor:pointer; transition:transform .2s, background .2s;}
+  .review-next-btn:hover{transform:scale(1.08); background:var(--rust);}
+
+  /* ---------- WHY CHOOSE US ---------- */
+  .value-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:16px;}
+  .value-card{background:var(--cream); border:2px solid var(--brown); border-radius:14px; padding:22px; text-align:center;}
+  .value-card .cat-icon{display:block; font-size:1.8rem; margin-bottom:10px;}
+  .value-card h3{margin:0 0 8px; font-size:1rem; color:var(--maroon-deep);}
+  .value-card p{margin:0; font-size:.85rem; color:#5c4a3d; line-height:1.5;}
+
+  /* ---------- MENU (photo-forward categories) ---------- */
+  .menu-photo-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:20px;}
+  details.category-photo{background:var(--cream); border:2px solid var(--brown); border-radius:18px; overflow:hidden;}
+  details.category-photo[open]{grid-column:1 / -1;}
+  details.category-photo summary{list-style:none; cursor:pointer; display:flex; flex-direction:column; align-items:stretch; padding:0;}
+  details.category-photo summary::-webkit-details-marker{display:none;}
+  .cat-photo-placeholder{width:100%; height:280px; flex:0 0 auto; background:repeating-linear-gradient(135deg, var(--brown) 0 18px, #8f4d30 18px 36px); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.65); font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; text-align:center; padding:10px; overflow:hidden;}
+  .cat-photo-placeholder img{width:100%; height:100%; object-fit:cover; object-position:center; display:block; border-radius:16px 16px 0 0;}
+  .cat-caption{width:100%; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:8px; padding:18px 20px;}
+  .cat-caption .cat-icon{font-size:1.5rem;}
+  .cat-caption-text{width:100%;}
+  .cat-caption-title{font-weight:800; color:var(--maroon-deep); font-size:1.1rem; display:block;}
+  .cat-caption .cat-sub{display:block; font-size:.8rem; color:#7a5c47; font-weight:400; margin-top:4px; line-height:1.4;}
+  .cat-toggle{background:var(--mustard); color:var(--maroon-deep); font-size:.78rem; font-weight:700; padding:7px 15px; border-radius:999px; white-space:nowrap;}
+  @media (max-width:480px){
+    .cat-photo-placeholder{height:220px;}
+  }
+  details.category-photo[open] .cat-toggle::after{content:" \25B2";}
+  details.category-photo:not([open]) .cat-toggle::after{content:" \25BC";}
+  .details-body{padding:0 22px 24px;}
+
+  .tabs{display:flex; justify-content:center; gap:10px; margin-bottom:24px; flex-wrap:wrap;}
+  .tab-btn{background:var(--cream-2); border:2px solid var(--brown); color:var(--maroon-deep); padding:8px 18px; border-radius:999px; font-weight:600; font-size:.85rem; cursor:pointer; font-family:'Arial',sans-serif;}
+  .tab-btn.active, .tab-btn:hover{background:var(--maroon); color:var(--cream); border-color:var(--maroon);}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+  .tab-note{text-align:center; color:var(--rust); font-weight:600; font-size:.85rem; margin-top:18px;}
+
+  .menu-group{margin-bottom:26px;}
+  .menu-group:last-child{margin-bottom:0;}
+  .menu-group-title{display:flex; align-items:center; gap:10px; font-size:1rem; font-weight:700; color:var(--rust); margin-bottom:12px; padding-bottom:8px; border-bottom:1px dashed var(--brown);}
+  .price-pill{margin-left:auto; background:var(--mustard); color:var(--maroon-deep); font-size:.78rem; padding:3px 12px; border-radius:999px; font-weight:700; white-space:nowrap;}
+  .item-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(190px,1fr)); gap:9px;}
+  .item-card{background:var(--cream-2); border:1px solid rgba(168,92,58,.35); border-radius:10px; padding:10px 14px; font-size:.9rem; font-weight:500;}
+
+  .line-list{display:grid; gap:0; background:var(--cream-2); border-radius:12px; overflow:hidden; border:1px solid rgba(168,92,58,.35);}
+  .line-item{display:flex; justify-content:space-between; gap:16px; padding:12px 18px; font-size:.9rem; border-bottom:1px solid rgba(168,92,58,.2);}
+  .line-item:last-child{border-bottom:none;}
+  .line-item:nth-child(odd){background:rgba(217,160,102,.14);}
+  .line-item .name{font-weight:500;}
+  .line-item .price{font-weight:700; color:var(--rust); white-space:nowrap;}
+
+  .callout{background:var(--maroon); color:var(--cream); border-radius:16px; padding:24px 26px; margin-top:22px; display:flex; gap:16px; flex-wrap:wrap; align-items:flex-start;}
+  .callout h4{margin:0 0 10px; color:var(--mustard); font-size:1.1rem;}
+  .callout ul{margin:0; padding-left:20px; font-size:.9rem; line-height:1.7;}
+  .callout-icon{font-size:1.5rem;}
+
+  .systems{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:20px;}
+  .system-card{background:var(--cream-2); border:2px solid var(--brown); border-radius:14px; padding:18px;}
+  .system-card .num{font-weight:800; font-size:1.3rem; color:var(--rust); display:block; margin-bottom:6px;}
+  .system-card p{margin:0; font-size:.9rem; line-height:1.5;}
+
+  /* ---------- ORDER BUILDER ---------- */
+  .order-builder{max-width:640px; margin:0 auto 28px; background:var(--cream); border-radius:18px; padding:26px; box-shadow:0 8px 28px rgba(74,20,20,.1);}
+  .ob-tabs{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px;}
+  .ob-tab{background:var(--cream-2); border:2px solid var(--brown); color:var(--maroon-deep); padding:7px 14px; border-radius:999px; font-weight:600; font-size:.8rem; cursor:pointer; font-family:'Arial',sans-serif;}
+  .ob-tab.active, .ob-tab:hover{background:var(--maroon); color:var(--cream); border-color:var(--maroon);}
+  .ob-panel{display:none;}
+  .ob-panel.active{display:block;}
+  .ob-panel label{display:block; font-size:.85rem; font-weight:700; color:var(--maroon-deep); margin:12px 0 5px;}
+  .ob-panel label:first-of-type{margin-top:0;}
+  .ob-panel select, .ob-panel input[type="number"]{width:100%; padding:11px 13px; border-radius:9px; border:1px solid rgba(168,92,58,.5); font-family:'Arial',sans-serif; font-size:.92rem; background:var(--cream-2); color:var(--ink);}
+  .ob-add{margin-top:16px; width:100%;}
+  .ob-note{font-size:.78rem; color:#8a6a52; margin:10px 0 0; font-style:italic;}
+  .ob-subtoggle{display:flex; gap:8px; margin-bottom:18px;}
+  .ob-subtab{flex:1; background:var(--cream-2); border:2px solid var(--brown); color:var(--maroon-deep); padding:9px; border-radius:10px; font-weight:700; font-size:.85rem; cursor:pointer; font-family:'Arial',sans-serif;}
+  .ob-subtab.active{background:var(--mustard); border-color:var(--mustard); color:var(--maroon-deep);}
+  .ob-subpanel{display:none;}
+  .ob-subpanel.active{display:block;}
+
+  .cart-box{max-width:640px; margin:0 auto; background:var(--maroon); color:var(--cream); border-radius:18px; padding:24px 26px;}
+  .cart-box h3{margin:0 0 14px; color:var(--mustard); font-size:1.05rem;}
+  .cart-list{display:flex; flex-direction:column; gap:10px; margin-bottom:16px;}
+  .cart-empty{opacity:.7; font-size:.9rem; margin:0;}
+  .cart-item{display:flex; justify-content:space-between; align-items:center; gap:12px; background:rgba(243,229,208,.1); border-radius:10px; padding:10px 14px; font-size:.88rem;}
+  .cart-item-info{flex:1;}
+  .cart-item-price{font-weight:700; color:var(--mustard); white-space:nowrap;}
+  .cart-item-remove{background:none; border:none; color:var(--cream); opacity:.7; font-size:1.1rem; cursor:pointer; padding:0 4px;}
+  .cart-item-remove:hover{opacity:1; color:#ff9b9b;}
+  .cart-total-row{display:flex; justify-content:space-between; align-items:center; font-weight:800; font-size:1.15rem; border-top:1.5px dashed rgba(243,229,208,.4); padding-top:14px;}
+
+  /* ---------- ORDER FORM (contact) ---------- */
+  .contact-wrap{display:grid; grid-template-columns:1fr 1fr; gap:36px; max-width:1000px; margin:0 auto; align-items:start;}
+  .contact-info h3{color:var(--maroon-deep); margin:0 0 6px;}
+  .contact-list{list-style:none; padding:0; margin:20px 0 0; display:flex; flex-direction:column; gap:16px;}
+  .contact-list li{display:flex; align-items:center; gap:12px; font-size:.95rem;}
+  .contact-list .ci-icon{font-size:1.3rem; width:34px;height:34px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;border:2px solid var(--brown);flex-shrink:0;}
+  form.contact-form{background:var(--cream); border:2px solid var(--brown); border-radius:16px; padding:26px; display:flex; flex-direction:column; gap:14px;}
+  form.contact-form label{font-size:.85rem; font-weight:600; color:var(--maroon-deep); display:block; margin-bottom:5px;}
+  form.contact-form input, form.contact-form select, form.contact-form textarea{width:100%; padding:11px 13px; border-radius:9px; border:1px solid rgba(168,92,58,.5); font-family:'Arial',sans-serif; font-size:.92rem; background:var(--cream-2); color:var(--ink);}
+  form.contact-form textarea{resize:vertical; min-height:100px;}
+  form.contact-form .btn{align-self:flex-start;}
+  @media (max-width:760px){.contact-wrap{grid-template-columns:1fr;}}
+
+  .btn{display:inline-block; padding:13px 28px; border-radius:999px; font-weight:700; font-size:.95rem; text-decoration:none; border:2px solid transparent; cursor:pointer; font-family:'Arial',sans-serif; transition:transform .15s ease;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-solid{background:var(--mustard); color:var(--maroon-deep);}
+
+  footer{background:var(--maroon-deep); color:var(--cream); text-align:center; padding:36px 24px 26px;}
+  footer .brand-logo{margin:0 auto 12px; width:52px !important; height:52px !important;}
+  footer p{margin:4px 0; font-size:.88rem; opacity:.85;}
+  footer nav{margin:14px 0; display:block;}
+  footer nav ul{justify-content:center;}
+  footer nav button{margin:0 10px; font-size:.85rem; opacity:.85; color:var(--cream);}
+  footer nav button:hover{opacity:1;}
+
+  .page{display:none;}
+  .page.active{display:block;}
+
+  @media (max-width:720px){
+    nav ul{position:absolute; top:100%; left:0; right:0; flex-direction:column; background:var(--maroon); padding:16px 24px; gap:14px; display:none; align-items:flex-start;}
+    nav ul.open{display:flex;}
+    .nav-toggle{display:block;}
+  }
+  :focus-visible{outline:3px solid var(--mustard); outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition-duration:.001s !important; animation:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <button class="brand" onclick="showPage('home')">
+      <img src="images/logo.jpg" alt="Deshi Vibes by Sadia logo" class="brand-logo">
+      <span style="text-transform:uppercase;">Deshi Vibes <span style="opacity:.7;font-weight:400;">by Sadia</span></span>
+    </button>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.getElementById('navlist').classList.toggle('open')">&#9776;</button>
+    <nav>
+      <ul id="navlist">
+        <li><button class="navlink" onclick="showPage('home')">Home</button></li>
+        <li><button class="navlink" onclick="showPage('about')">About</button></li>
+        <li><button class="navlink page-link" onclick="goToOrder()">Order Now</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================================================ HOME ============================================================ -->
+<div id="page-home" class="page active">
+
+  <section class="hero-photo">
+    <span class="photo-note">Hero photo/video goes here</span>
+    <div class="hero-content">
+      <img src="images/logo.jpg" alt="Deshi Vibes by Sadia logo" class="hero-badge-logo">
+      <span class="hero-eyebrow">Home-cooked South Asian cuisine</span>
+      <h1>Feel the Taste of Home</h1>
+      <button class="hero-cta" onclick="goToOrder()">Order Now</button>
+      <button class="hero-secondary" onclick="scrollToSection('menu')">or browse the full menu</button>
+      <div class="hero-badge-row">
+        <span class="badge-pill">&#9989; Food Handler Certified</span>
+        <span class="badge-pill">&#9770; 100% Halal</span>
+        <span class="badge-pill">&#127807; Healthy Environment</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="leafvine-divider" aria-hidden="true">
+    <svg viewBox="0 0 1200 90" preserveAspectRatio="none" role="presentation">
+      <defs>
+        <pattern id="lv-1" width="150" height="90" patternUnits="userSpaceOnUse">
+          <path d="M0,45 C20,42 30,48 40,45 C55,42 70,48 75,45 C90,42 100,48 115,45 C130,42 140,48 150,45" stroke="#f3e5d0" stroke-width="1.5" fill="none" opacity="0.85"/>
+          <path d="M40,45 C25,38 25,13 40,6 C55,13 55,38 40,45 Z" stroke="#f3e5d0" stroke-width="1.8" fill="none"/>
+          <path d="M40,45 L40,6 M40,52.2 L33,48.2 M40,52.2 L47,48.2 M40,42.6 L31,38.6 M40,42.6 L49,38.6 M40,33 L30,27 M40,33 L50,27 M40,23.4 L32,17.4 M40,23.4 L48,17.4 M40,13.8 L36,7.8 M40,13.8 L44,7.8" stroke="#f3e5d0" stroke-width="0.9" fill="none"/>
+          <path d="M18,45 C18,40 14,37 10,39 C6,41 6,46 10,47 C13,48 15,46 14,44" stroke="#f3e5d0" stroke-width="1.4" fill="none"/>
+          <path d="M6,40 L9,44 L6,48 L3,44 Z" stroke="#f3e5d0" stroke-width="1" fill="none"/>
+          <path d="M115,45 C100,52 100,77 115,84 C130,77 130,52 115,45 Z" stroke="#f3e5d0" stroke-width="1.8" fill="none"/>
+          <path d="M115,45 L115,84 M115,52.2 L108,56.2 M115,52.2 L122,56.2 M115,42.6 L106,46.6 M115,42.6 L124,46.6 M115,33 L105,39 M115,33 L125,39 M115,23.4 L107,29.4 M115,23.4 L123,29.4 M115,13.8 L111,19.8 M115,13.8 L119,19.8" stroke="#f3e5d0" stroke-width="0.9" fill="none"/>
+          <path d="M137,45 C137,40 141,37 145,39 C149,41 149,46 145,47 C142,48 140,46 141,44" stroke="#f3e5d0" stroke-width="1.4" fill="none"/>
+          <path d="M150,40 L153,44 L150,48 L147,44 Z" stroke="#f3e5d0" stroke-width="1" fill="none"/>
+        </pattern>
+      </defs>
+      <rect width="1200" height="90" fill="url(#lv-1)"/>
+    </svg>
+  </div>
+
+  <!-- ============ OUR SPECIALTIES ============ -->
+  <section class="band-cream">
+    <div class="section-inner">
+      <div class="section-head">
+        <h2>Our Specialties with Discount</h2>
+        <p>A few favorites, on offer right now.</p>
+      </div>
+
+      <div class="specialty-row">
+        <div class="specialty-text">
+          <h3>Beef Tehari</h3>
+          <span class="offer-badge">5% OFF on 5 servings</span>
+          <p class="specialty-desc">A fragrant Bangladeshi rice dish slow-cooked with tender beef and aromatic spices.</p>
+          <div class="specialty-price">$18/serve</div>
+        </div>
+        <div class="specialty-image">Photo coming soon</div>
+      </div>
+
+      <div class="specialty-row">
+        <div class="specialty-text">
+          <h3>Chicken Roast with Pulao</h3>
+          <span class="offer-badge">5% OFF on 5 servings</span>
+          <p class="specialty-desc">Succulent roasted chicken served with flavorful pulao, perfect for celebrations.</p>
+          <div class="specialty-price">$17/serve</div>
+        </div>
+        <div class="specialty-image">Photo coming soon</div>
+      </div>
+
+      <div class="specialty-row">
+        <div class="specialty-text">
+          <h3>Jalebi</h3>
+          <span class="offer-badge">10% OFF on 5 servings</span>
+          <p class="specialty-desc">Crispy, golden spirals soaked in fragrant sugar syrup — a timeless South Asian favorite.</p>
+          <div class="specialty-price">$20/lb</div>
+        </div>
+        <div class="specialty-image">Photo coming soon</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="leafvine-divider" aria-hidden="true">
+    <svg viewBox="0 0 1200 90" preserveAspectRatio="none" role="presentation">
+      <defs>
+        <pattern id="lv-2" width="150" height="90" patternUnits="userSpaceOnUse">
+          <path d="M0,45 C20,42 30,48 40,45 C55,42 70,48 75,45 C90,42 100,48 115,45 C130,42 140,48 150,45" stroke="#f3e5d0" stroke-width="1.5" fill="none" opacity="0.85"/>
+          <path d="M40,45 C25,38 25,13 40,6 C55,13 55,38 40,45 Z" stroke="#f3e5d0" stroke-width="1.8" fill="none"/>
+          <path d="M40,45 L40,6 M40,52.2 L33,48.2 M40,52.2 L47,48.2 M40,42.6 L31,38.6 M40,42.6 L49,38.6 M40,33 L30,27 M40,33 L50,27 M40,23.4 L32,17.4 M40,23.4 L48,17.4 M40,13.8 L36,7.8 M40,13.8 L44,7.8" stroke="#f3e5d0" stroke-width="0.9" fill="none"/>
+          <path d="M18,45 C18,40 14,37 10,39 C6,41 6,46 10,47 C13,48 15,46 14,44" stroke="#f3e5d0" stroke-width="1.4" fill="none"/>
+          <path d="M6,40 L9,44 L6,48 L3,44 Z" stroke="#f3e5d0" stroke-width="1" fill="none"/>
+          <path d="M115,45 C100,52 100,77 115,84 C130,77 130,52 115,45 Z" stroke="#f3e5d0" stroke-width="1.8" fill="none"/>
+          <path d="M115,45 L115,84 M115,52.2 L108,56.2 M115,52.2 L122,56.2 M115,42.6 L106,46.6 M115,42.6 L124,46.6 M115,33 L105,39 M115,33 L125,39 M115,23.4 L107,29.4 M115,23.4 L123,29.4 M115,13.8 L111,19.8 M115,13.8 L119,19.8" stroke="#f3e5d0" stroke-width="0.9" fill="none"/>
+          <path d="M137,45 C137,40 141,37 145,39 C149,41 149,46 145,47 C142,48 140,46 141,44" stroke="#f3e5d0" stroke-width="1.4" fill="none"/>
+          <path d="M150,40 L153,44 L150,48 L147,44 Z" stroke="#f3e5d0" stroke-width="1" fill="none"/>
+        </pattern>
+      </defs>
+      <rect width="1200" height="90" fill="url(#lv-2)"/>
+    </svg>
+  </div>
+
+  <!-- ============ REVIEWS ============ -->
+  <section>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">from our customers</span>
+        <h2>Words From People</h2>
+        <p>Placeholder reviews below — swap these for the real ones whenever you're ready.</p>
+      </div>
+
+      <div class="reviews-wrap">
+        <div class="review-card active" data-index="0">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">"Tastes exactly like my grandmother's cooking back home. The beef tehari is unbelievable."</p>
+          <div class="review-name">— Placeholder Reviewer 1</div>
+        </div>
+        <div class="review-card" data-index="1">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">"Ordered for a family get-together and everyone asked where the food was from. Booking again."</p>
+          <div class="review-name">— Placeholder Reviewer 2</div>
+        </div>
+        <div class="review-card" data-index="2">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">"The weekly meal boxes have honestly changed my week. Fresh, homemade, and always on time."</p>
+          <div class="review-name">— Placeholder Reviewer 3</div>
+        </div>
+        <div class="review-card" data-index="3">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">"Custom cake came out even better than the reference photo I sent. So much detail."</p>
+          <div class="review-name">— Placeholder Reviewer 4</div>
+        </div>
+        <div class="review-card" data-index="4">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">"Best jalebi I've had outside of Dhaka, hands down. Ordering a batch every month now."</p>
+          <div class="review-name">— Placeholder Reviewer 5</div>
+        </div>
+        <div class="review-card" data-index="5">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">"Really appreciate that everything is halal and made fresh — you can taste the difference."</p>
+          <div class="review-name">— Placeholder Reviewer 6</div>
+        </div>
+        <div class="review-card" data-index="6">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">"Communication was easy and the food arrived exactly when promised. Highly recommend."</p>
+          <div class="review-name">— Placeholder Reviewer 7</div>
+        </div>
+        <div class="review-card" data-index="7">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-quote">"Homestyle cooking that actually tastes homestyle. Rare to find that anymore."</p>
+          <div class="review-name">— Placeholder Reviewer 8</div>
+        </div>
+
+        <div class="review-controls">
+          <span class="review-dots" id="reviewCounter">1 / 8</span>
+          <button class="review-next-btn" onclick="nextReview()" aria-label="Next review">&#8594;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY CHOOSE US ============ -->
+  <section class="band-tint">
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">our promise</span>
+        <h2>Why Choose Us</h2>
+      </div>
+      <div class="value-grid">
+        <div class="value-card"><span class="cat-icon">&#9989;</span><h3>Food Handler Certified</h3><p>Prepared under proper food safety training and certification.</p></div>
+        <div class="value-card"><span class="cat-icon">&#9770;</span><h3>100% Halal</h3><p>Every dish is fully halal, no exceptions.</p></div>
+        <div class="value-card"><span class="cat-icon">&#127807;</span><h3>Healthy Environment</h3><p>Cooked in a clean, hygienic home kitchen.</p></div>
+        <div class="value-card"><span class="cat-icon">&#127858;</span><h3>Authentic Recipes</h3><p>Traditional South Asian recipes, made the real way.</p></div>
+        <div class="value-card"><span class="cat-icon">&#10024;</span><h3>Made Fresh to Order</h3><p>Nothing pre-made or frozen — cooked when you order.</p></div>
+        <div class="value-card"><span class="cat-icon">&#128106;</span><h3>Family-Run &amp; Handmade</h3><p>Small-batch, homemade, with care in every order.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="leafvine-divider" aria-hidden="true">
+    <svg viewBox="0 0 1200 90" preserveAspectRatio="none" role="presentation">
+      <defs>
+        <pattern id="lv-3" width="150" height="90" patternUnits="userSpaceOnUse">
+          <path d="M0,45 C20,42 30,48 40,45 C55,42 70,48 75,45 C90,42 100,48 115,45 C130,42 140,48 150,45" stroke="#f3e5d0" stroke-width="1.5" fill="none" opacity="0.85"/>
+          <path d="M40,45 C25,38 25,13 40,6 C55,13 55,38 40,45 Z" stroke="#f3e5d0" stroke-width="1.8" fill="none"/>
+          <path d="M40,45 L40,6 M40,52.2 L33,48.2 M40,52.2 L47,48.2 M40,42.6 L31,38.6 M40,42.6 L49,38.6 M40,33 L30,27 M40,33 L50,27 M40,23.4 L32,17.4 M40,23.4 L48,17.4 M40,13.8 L36,7.8 M40,13.8 L44,7.8" stroke="#f3e5d0" stroke-width="0.9" fill="none"/>
+          <path d="M18,45 C18,40 14,37 10,39 C6,41 6,46 10,47 C13,48 15,46 14,44" stroke="#f3e5d0" stroke-width="1.4" fill="none"/>
+          <path d="M6,40 L9,44 L6,48 L3,44 Z" stroke="#f3e5d0" stroke-width="1" fill="none"/>
+          <path d="M115,45 C100,52 100,77 115,84 C130,77 130,52 115,45 Z" stroke="#f3e5d0" stroke-width="1.8" fill="none"/>
+          <path d="M115,45 L115,84 M115,52.2 L108,56.2 M115,52.2 L122,56.2 M115,42.6 L106,46.6 M115,42.6 L124,46.6 M115,33 L105,39 M115,33 L125,39 M115,23.4 L107,29.4 M115,23.4 L123,29.4 M115,13.8 L111,19.8 M115,13.8 L119,19.8" stroke="#f3e5d0" stroke-width="0.9" fill="none"/>
+          <path d="M137,45 C137,40 141,37 145,39 C149,41 149,46 145,47 C142,48 140,46 141,44" stroke="#f3e5d0" stroke-width="1.4" fill="none"/>
+          <path d="M150,40 L153,44 L150,48 L147,44 Z" stroke="#f3e5d0" stroke-width="1" fill="none"/>
+        </pattern>
+      </defs>
+      <rect width="1200" height="90" fill="url(#lv-3)"/>
+    </svg>
+  </div>
+
+  <!-- ============ MENU ============ -->
+  <section id="menu" class="band-cream">
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">everything we make</span>
+        <h2>Our Menu</h2>
+        <p>Tap a category photo to open the full price list.</p>
+      </div>
+
+      <div class="menu-photo-grid">
+
+        <details class="category-photo">
+          <summary>
+            <div class="cat-photo-placeholder"><img src="images/special-meals.jpg" alt="Special Meals — biriyani and rice dishes"></div>
+            <div class="cat-caption">
+              <span class="cat-icon">&#127858;</span>
+              <span class="cat-caption-text"><span class="cat-caption-title">Special Meals</span><span class="cat-sub">Biriyani, khichuri &amp; tehari</span></span>
+              <span class="cat-toggle">View Menu</span>
+            </div>
+          </summary>
+          <div class="details-body">
+            <div class="line-list">
+              <div class="line-item"><span class="name">Khichuri with egg masala</span><span class="price">$14</span></div>
+              <div class="line-item"><span class="name">Chicken biriyani</span><span class="price">$15</span></div>
+              <div class="line-item"><span class="name">Beef biriyani / beef tehari</span><span class="price">$18</span></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="category-photo">
+          <summary>
+            <div class="cat-photo-placeholder"><img src="images/comfort-dishes.jpg" alt="Comfort Dishes — bhorta and curries"></div>
+            <div class="cat-caption">
+              <span class="cat-icon">&#127860;</span>
+              <span class="cat-caption-text"><span class="cat-caption-title">Comfort Dishes</span><span class="cat-sub">Bhorta &amp; curries, by the pound</span></span>
+              <span class="cat-toggle">View Menu</span>
+            </div>
+          </summary>
+          <div class="details-body">
+            <div class="line-list">
+              <div class="line-item"><span class="name">Begun bhorta</span><span class="price">$12/lb</span></div>
+              <div class="line-item"><span class="name">Daal bhorta</span><span class="price">$12/lb</span></div>
+              <div class="line-item"><span class="name">Loitta shutki bhorta</span><span class="price">$16/lb</span></div>
+              <div class="line-item"><span class="name">Tomato bhorta</span><span class="price">$12/lb</span></div>
+              <div class="line-item"><span class="name">Aloo bhorta</span><span class="price">$10/lb</span></div>
+              <div class="line-item"><span class="name">Beef jhura mangsho</span><span class="price">$15/lb</span></div>
+              <div class="line-item"><span class="name">Chicken masala</span><span class="price">$13/lb</span></div>
+              <div class="line-item"><span class="name">Beef masala</span><span class="price">$20/lb</span></div>
+              <div class="line-item"><span class="name">Daal (per box)</span><span class="price">$9</span></div>
+              <div class="line-item"><span class="name">Mixed veg with shrimp</span><span class="price">$13/lb</span></div>
+              <div class="line-item"><span class="name">Shrimp with alu</span><span class="price">$13/lb</span></div>
+              <div class="line-item"><span class="name">Pompano fish (whole)</span><span class="price">$13</span></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="category-photo">
+          <summary>
+            <div class="cat-photo-placeholder"><img src="images/weekly-meals.jpg" alt="Weekly Meals — portioned meal boxes"></div>
+            <div class="cat-caption">
+              <span class="cat-icon">&#127971;</span>
+              <span class="cat-caption-text"><span class="cat-caption-title">Weekly Meals</span><span class="cat-sub">Customize your own box</span></span>
+              <span class="cat-toggle">View Menu</span>
+            </div>
+          </summary>
+          <div class="details-body">
+            <div class="line-list">
+              <div class="line-item"><span class="name">Mix veg with shutki and egg fry</span><span class="price">$14</span></div>
+              <div class="line-item"><span class="name">Alu bhaji with daal and egg fry</span><span class="price">$13</span></div>
+              <div class="line-item"><span class="name">Lau with bhuter dal and chicken</span><span class="price">$12</span></div>
+              <div class="line-item"><span class="name">Chicken masala with daal</span><span class="price">$10</span></div>
+              <div class="line-item"><span class="name">Beef masala and daal</span><span class="price">$13</span></div>
+              <div class="line-item"><span class="name">Chicken kofta curry</span><span class="price">$14</span></div>
+              <div class="line-item"><span class="name">Sardine fish with veg and daal</span><span class="price">$12</span></div>
+              <div class="line-item"><span class="name">Egg masala and daal</span><span class="price">$10</span></div>
+              <div class="line-item"><span class="name">Alu chingri + daal</span><span class="price">$10</span></div>
+              <div class="line-item"><span class="name">Pompano fish and daal</span><span class="price">$15</span></div>
+              <div class="line-item"><span class="name">Mixed veg with chicken kebab and daal</span><span class="price">$14</span></div>
+              <div class="line-item"><span class="name">Begun bhorta + tomato bhorta</span><span class="price">$15</span></div>
+              <div class="line-item"><span class="name">Khichuri with egg masala (1 serving)</span><span class="price">$14</span></div>
+              <div class="line-item"><span class="name">Fried rice only (5 servings)</span><span class="price">$70</span></div>
+              <div class="line-item"><span class="name">Chinese veg / mixed veg</span><span class="price">$16/lb</span></div>
+              <div class="line-item"><span class="name">Chili chicken / shrimp</span><span class="price">$13/lb</span></div>
+              <div class="line-item"><span class="name">Fried rice with chili chicken</span><span class="price">$14</span></div>
+            </div>
+            <div class="systems">
+              <div class="system-card"><span class="num">Option 1</span><p>Pick any item straight from the menu — and customize it by the pound or by the box.</p></div>
+              <div class="system-card"><span class="num">Option 2</span><p>Choose any four individual items from the list, each ordered separately at its listed price.</p></div>
+            </div>
+            <div class="callout">
+              <span class="callout-icon">&#128197;</span>
+              <div>
+                <h4>Order instructions</h4>
+                <ul>
+                  <li>Select a minimum of 4 sets every week — order multiple amounts from each of the 4 sets.</li>
+                  <li>Confirm your order 3 days in advance.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="category-photo">
+          <summary>
+            <div class="cat-photo-placeholder"><img src="images/desserts.jpg" alt="Desserts — pudding and sweets"></div>
+            <div class="cat-caption">
+              <span class="cat-icon">&#127848;</span>
+              <span class="cat-caption-text"><span class="cat-caption-title">Desserts</span><span class="cat-sub">Pudding, payesh &amp; more</span></span>
+              <span class="cat-toggle">View Menu</span>
+            </div>
+          </summary>
+          <div class="details-body">
+            <div class="line-list">
+              <div class="line-item"><span class="name">Cheese pudding</span><span class="price">$15</span></div>
+              <div class="line-item"><span class="name">Payesh</span><span class="price">$20/lb</span></div>
+              <div class="line-item"><span class="name">Malai cake</span><span class="price">$15/lb</span></div>
+              <div class="line-item"><span class="name">Dudh shemai</span><span class="price">$20/lb</span></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="category-photo">
+          <summary>
+            <div class="cat-photo-placeholder"><img src="images/snacks.jpg" alt="Snacks — fried samosas"></div>
+            <div class="cat-caption">
+              <span class="cat-icon">&#129386;</span>
+              <span class="cat-caption-text"><span class="cat-caption-title">Snacks</span><span class="cat-sub">Quick bites</span></span>
+              <span class="cat-toggle">View Menu</span>
+            </div>
+          </summary>
+          <div class="details-body">
+            <div class="line-list">
+              <div class="line-item"><span class="name">Dim porata (each)</span><span class="price">$10</span></div>
+              <div class="line-item"><span class="name">Chicken kebab (10 pieces)</span><span class="price">$15</span></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="category-photo">
+          <summary>
+            <div class="cat-photo-placeholder"><img src="images/cakery-brownies.jpg" alt="Cakery and Brownies — fruit cake"></div>
+            <div class="cat-caption">
+              <span class="cat-icon">&#127856;</span>
+              <span class="cat-caption-text"><span class="cat-caption-title">Cakery &amp; Brownies</span><span class="cat-sub">Custom cakes, brownies &amp; cupcakes</span></span>
+              <span class="cat-toggle">View Menu</span>
+            </div>
+          </summary>
+          <div class="details-body">
+            <div class="tabs">
+              <button class="tab-btn active" onclick="showTab(event,'c8')">8" Round — feeds 10–15</button>
+              <button class="tab-btn" onclick="showTab(event,'c6')">6" Round — feeds 8–10</button>
+              <button class="tab-btn" onclick="showTab(event,'brownieMenu')">Brownies &amp; Cupcakes</button>
+            </div>
+            <div id="c8" class="tab-panel active">
+              <div class="menu-group">
+                <div class="menu-group-title">Classic Cakes <span class="price-pill">$60</span></div>
+                <div class="item-grid">
+                  <div class="item-card">Vanilla Cake</div><div class="item-card">Strawberry Cake</div>
+                  <div class="item-card">Chocolate Cake</div><div class="item-card">Orange Cake</div>
+                  <div class="item-card">Lemon Cake</div>
+                </div>
+              </div>
+              <div class="menu-group">
+                <div class="menu-group-title">Specialty Cakes <span class="price-pill">$65</span></div>
+                <div class="item-grid">
+                  <div class="item-card">Carrot Cake</div><div class="item-card">Black Forest Cake</div><div class="item-card">White Forest Cake</div>
+                </div>
+              </div>
+              <div class="menu-group">
+                <div class="menu-group-title">Premium Cakes <span class="price-pill">$70</span></div>
+                <div class="item-grid">
+                  <div class="item-card">Red Velvet Cake with cheese frosting</div><div class="item-card">Rasmalai Cake</div>
+                </div>
+              </div>
+              <div class="menu-group">
+                <div class="menu-group-title">Fusion / Deluxe Cakes <span class="price-pill">$75</span></div>
+                <div class="item-grid"><div class="item-card">Red Velvet &amp; Cheesecake Fusion</div></div>
+              </div>
+            </div>
+            <div id="c6" class="tab-panel">
+              <div class="menu-group">
+                <div class="menu-group-title">Classic Cakes <span class="price-pill">$35</span></div>
+                <div class="item-grid">
+                  <div class="item-card">Vanilla Cake</div><div class="item-card">Strawberry Cake</div>
+                  <div class="item-card">Chocolate Cake</div><div class="item-card">Orange Cake</div>
+                  <div class="item-card">Lemon Cake</div>
+                </div>
+              </div>
+              <div class="menu-group">
+                <div class="menu-group-title">Specialty Cakes <span class="price-pill">$40</span></div>
+                <div class="item-grid">
+                  <div class="item-card">Carrot Cake</div><div class="item-card">Black Forest Cake</div><div class="item-card">White Forest Cake</div>
+                </div>
+              </div>
+              <div class="menu-group">
+                <div class="menu-group-title">Premium Cakes <span class="price-pill">$45</span></div>
+                <div class="item-grid">
+                  <div class="item-card">Red Velvet Cake with cheese frosting</div><div class="item-card">Rasmalai Cake</div>
+                </div>
+              </div>
+              <div class="menu-group">
+                <div class="menu-group-title">Fusion / Deluxe Cakes <span class="price-pill">$50</span></div>
+                <div class="item-grid"><div class="item-card">Red Velvet &amp; Cheesecake Fusion</div></div>
+              </div>
+            </div>
+            <div id="brownieMenu" class="tab-panel">
+              <div class="line-list">
+                <div class="line-item"><span class="name">Brownies (max 12 pieces)</span><span class="price">$35</span></div>
+                <div class="line-item"><span class="name">Cupcakes (12 pieces)</span><span class="price">$40</span></div>
+                <div class="line-item"><span class="name">Pull-Apart Cupcakes (12 pieces)</span><span class="price">$45</span></div>
+              </div>
+            </div>
+            <p class="tab-note">Price may vary with custom designs</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="leafvine-divider" aria-hidden="true">
+    <svg viewBox="0 0 1200 90" preserveAspectRatio="none" role="presentation">
+      <defs>
+        <pattern id="lv-4" width="150" height="90" patternUnits="userSpaceOnUse">
+          <path d="M0,45 C20,42 30,48 40,45 C55,42 70,48 75,45 C90,42 100,48 115,45 C130,42 140,48 150,45" stroke="#f3e5d0" stroke-width="1.5" fill="none" opacity="0.85"/>
+          <path d="M40,45 C25,38 25,13 40,6 C55,13 55,38 40,45 Z" stroke="#f3e5d0" stroke-width="1.8" fill="none"/>
+          <path d="M40,45 L40,6 M40,52.2 L33,48.2 M40,52.2 L47,48.2 M40,42.6 L31,38.6 M40,42.6 L49,38.6 M40,33 L30,27 M40,33 L50,27 M40,23.4 L32,17.4 M40,23.4 L48,17.4 M40,13.8 L36,7.8 M40,13.8 L44,7.8" stroke="#f3e5d0" stroke-width="0.9" fill="none"/>
+          <path d="M18,45 C18,40 14,37 10,39 C6,41 6,46 10,47 C13,48 15,46 14,44" stroke="#f3e5d0" stroke-width="1.4" fill="none"/>
+          <path d="M6,40 L9,44 L6,48 L3,44 Z" stroke="#f3e5d0" stroke-width="1" fill="none"/>
+          <path d="M115,45 C100,52 100,77 115,84 C130,77 130,52 115,45 Z" stroke="#f3e5d0" stroke-width="1.8" fill="none"/>
+          <path d="M115,45 L115,84 M115,52.2 L108,56.2 M115,52.2 L122,56.2 M115,42.6 L106,46.6 M115,42.6 L124,46.6 M115,33 L105,39 M115,33 L125,39 M115,23.4 L107,29.4 M115,23.4 L123,29.4 M115,13.8 L111,19.8 M115,13.8 L119,19.8" stroke="#f3e5d0" stroke-width="0.9" fill="none"/>
+          <path d="M137,45 C137,40 141,37 145,39 C149,41 149,46 145,47 C142,48 140,46 141,44" stroke="#f3e5d0" stroke-width="1.4" fill="none"/>
+          <path d="M150,40 L153,44 L150,48 L147,44 Z" stroke="#f3e5d0" stroke-width="1" fill="none"/>
+        </pattern>
+      </defs>
+      <rect width="1200" height="90" fill="url(#lv-4)"/>
+    </svg>
+  </div>
+
+  <!-- ============ ORDER FORM ============ -->
+  <section id="order-form" class="band-cream">
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">ready when you are</span>
+        <h2>Build Your Order</h2>
+        <p>Add anything you'd like — mix cakes, meals, and sweets into one order.</p>
+      </div>
+
+      <div class="order-builder">
+        <div class="ob-tabs">
+          <button class="ob-tab active" onclick="showObPanel(event,'specialMeals')">Special Meals</button>
+          <button class="ob-tab" onclick="showObPanel(event,'comfort')">Comfort Dishes</button>
+          <button class="ob-tab" onclick="showObPanel(event,'weekly')">Weekly Meals</button>
+          <button class="ob-tab" onclick="showObPanel(event,'desserts')">Desserts</button>
+          <button class="ob-tab" onclick="showObPanel(event,'snacks')">Snacks</button>
+          <button class="ob-tab" onclick="showObPanel(event,'cakery')">Cakery &amp; Brownies</button>
+        </div>
+
+        <div class="ob-panel active" id="ob-specialMeals" data-cat="specialMeals">
+          <label>Item</label>
+          <select id="sel-specialMeals"></select>
+          <label>Number of servings</label>
+          <input type="number" id="qty-specialMeals" min="1" value="1">
+          <button class="btn btn-solid ob-add" onclick="addFromCategory('specialMeals')">Add to order</button>
+        </div>
+
+        <div class="ob-panel" id="ob-comfort" data-cat="comfort">
+          <label>Item</label>
+          <select id="sel-comfort"></select>
+          <label>Pounds (lb)</label>
+          <input type="number" id="qty-comfort" min="1" step="0.5" value="1">
+          <button class="btn btn-solid ob-add" onclick="addFromCategory('comfort')">Add to order</button>
+        </div>
+
+        <div class="ob-panel" id="ob-weekly" data-cat="weekly">
+          <label>Item</label>
+          <select id="sel-weekly"></select>
+          <label>Number of boxes</label>
+          <input type="number" id="qty-weekly" min="1" value="1">
+          <button class="btn btn-solid ob-add" onclick="addFromCategory('weekly')">Add to order</button>
+        </div>
+
+        <div class="ob-panel" id="ob-desserts" data-cat="desserts">
+          <label>Item</label>
+          <select id="sel-desserts"></select>
+          <label>Pounds (lb)</label>
+          <input type="number" id="qty-desserts" min="1" step="0.5" value="1">
+          <button class="btn btn-solid ob-add" onclick="addFromCategory('desserts')">Add to order</button>
+        </div>
+
+        <div class="ob-panel" id="ob-snacks" data-cat="snacks">
+          <label>Item</label>
+          <select id="sel-snacks"></select>
+          <label>Number of pieces</label>
+          <input type="number" id="qty-snacks" min="1" value="1">
+          <button class="btn btn-solid ob-add" onclick="addFromCategory('snacks')">Add to order</button>
+        </div>
+
+        <div class="ob-panel" id="ob-cakery" data-cat="cakery">
+          <div class="ob-subtoggle">
+            <button class="ob-subtab active" onclick="showCakerySub(event,'cake')">Cake</button>
+            <button class="ob-subtab" onclick="showCakerySub(event,'brownie')">Brownies &amp; Cupcakes</button>
+          </div>
+
+          <div class="ob-subpanel active" id="cakery-cake">
+            <label>Flavor</label>
+            <select id="sel-cakeFlavor">
+              <option value="Vanilla">Vanilla</option>
+              <option value="Strawberry">Strawberry</option>
+              <option value="Chocolate">Chocolate</option>
+              <option value="Orange">Orange</option>
+              <option value="Lemon">Lemon</option>
+              <option value="Carrot">Carrot</option>
+              <option value="Black Forest">Black Forest</option>
+              <option value="White Forest">White Forest</option>
+              <option value="Red Velvet with cheese frosting">Red Velvet with cheese frosting</option>
+              <option value="Rasmalai">Rasmalai</option>
+              <option value="Red Velvet & Cheesecake Fusion">Red Velvet &amp; Cheesecake Fusion</option>
+            </select>
+            <label>Size</label>
+            <select id="sel-cakeSize">
+              <option value="8">8" round (feeds 10–15)</option>
+              <option value="6">6" round (feeds 8–10)</option>
+            </select>
+            <label>Layers</label>
+            <select id="sel-cakeLayers">
+              <option value="1">1 layer</option>
+              <option value="2">2 layers</option>
+              <option value="3">3 layers</option>
+              <option value="4">4 layers</option>
+            </select>
+            <p class="ob-note">Price shown is the base cake price — multi-layer designs are confirmed with Sadia.</p>
+            <button class="btn btn-solid ob-add" onclick="addCake()">Add to order</button>
+          </div>
+
+          <div class="ob-subpanel" id="cakery-brownie">
+            <label>Item</label>
+            <select id="sel-brownieItem">
+              <option value="Brownies">Brownies</option>
+              <option value="Cupcakes">Cupcakes</option>
+              <option value="Pull-Apart Cupcakes">Pull-Apart Cupcakes</option>
+            </select>
+            <label>Quantity (dozens)</label>
+            <select id="sel-brownieDozens">
+              <option value="0.5">Half dozen</option>
+              <option value="1" selected>1 dozen</option>
+              <option value="1.5">1.5 dozen</option>
+              <option value="2">2 dozen</option>
+              <option value="2.5">2.5 dozen</option>
+              <option value="3">3 dozen</option>
+            </select>
+            <button class="btn btn-solid ob-add" onclick="addBrownie()">Add to order</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-box">
+        <h3>Your Order</h3>
+        <div id="cartList" class="cart-list">
+          <p class="cart-empty" id="cartEmpty">Nothing added yet — build your order above.</p>
+        </div>
+        <div class="cart-total-row">
+          <span>Estimated Total</span>
+          <span id="cartTotal">$0</span>
+        </div>
+      </div>
+
+      <div class="contact-wrap" style="margin-top:36px;">
+        <div class="contact-info">
+          <h3>Get in touch</h3>
+          <p style="color:#5c4a3d; font-size:.92rem;">Orders, custom cakes, and weekly meal boxes — reach out and Sadia will get back to you to confirm details and pricing.</p>
+          <ul class="contact-list">
+            <li><span class="ci-icon">&#128222;</span> <span>[Phone number]</span></li>
+            <li><span class="ci-icon">&#9993;</span> <span>[Email address]</span></li>
+            <li><span class="ci-icon">&#128205;</span> <span>[Pickup / delivery area]</span></li>
+            <li><span class="ci-icon">&#128248;</span> <span>[Instagram / Facebook handle]</span></li>
+          </ul>
+          <div class="callout" style="margin-top:28px;">
+            <span class="callout-icon">&#128197;</span>
+            <div>
+              <h4>Before you order</h4>
+              <ul>
+                <li>Weekly meals: confirm at least 3 days ahead.</li>
+                <li>Custom cakes: reach out early for design requests — pricing may vary.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="orderForm" onsubmit="return sendOrder(event)">
+          <div><label for="name">Name</label><input type="text" id="name" placeholder="Your name" required></div>
+          <div><label for="phone">Phone or email</label><input type="text" id="phone" placeholder="How should we reach you?" required></div>
+          <div><label for="notes">Additional notes</label><textarea id="notes" placeholder="Delivery date, special requests, anything else"></textarea></div>
+          <div><label for="cakeImage">Cake design reference (optional)</label><input type="file" id="cakeImage" accept="image/*"></div>
+          <p class="ob-note">Your cart items above will be included automatically when you send this request.</p>
+          <button type="submit" class="btn btn-solid">Send order request</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================ ABOUT ============================================================ -->
+<div id="page-about" class="page">
+
+  <section class="hero-photo" style="min-height:320px;">
+    <span class="photo-note">Photo goes here</span>
+    <div class="hero-content">
+      <span class="hero-eyebrow">the story behind the kitchen</span>
+      <h1 style="font-size:clamp(2rem,5vw,3rem);">About Us</h1>
+    </div>
+  </section>
+
+  <section class="band-cream">
+    <div class="section-inner" style="max-width:700px; margin:0 auto; font-size:1rem; line-height:1.75; color:#3d2c20;">
+      <p><em>[Placeholder copy — swap this in for Sadia's real story.]</em> Deshi Vibes by Sadia started in a home kitchen, cooking the same South Asian dishes passed down through family — the kind of food that takes a whole afternoon and is worth every minute of it. What began as cooking for family and friends turned into weekly meal boxes, made-to-order cakes, and the sweets that show up at every celebration.</p>
+      <p>Every dish is cooked fresh to order, in small batches, the same way it would be made at home — no shortcuts, no pre-made bases.</p>
+    </div>
+    <div class="section-inner">
+      <div class="value-grid">
+        <div class="value-card"><span class="cat-icon">&#127859;</span><h3>Made from scratch</h3><p>Every order is cooked fresh — nothing sits pre-made in a freezer.</p></div>
+        <div class="value-card"><span class="cat-icon">&#128230;</span><h3>Built around your week</h3><p>Weekly meal boxes designed to be mixed, matched, and customized.</p></div>
+        <div class="value-card"><span class="cat-icon">&#127881;</span><h3>Made for celebrating</h3><p>Custom cakes and sweets for birthdays, get-togethers, and everything in between.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner" style="text-align:center;">
+      <h2 style="color:var(--maroon-deep); margin-bottom:14px;">Ready to order?</h2>
+      <p style="color:#5c4a3d; margin-bottom:26px;">Check the menu, then place your order.</p>
+      <button class="btn btn-solid" onclick="goToOrder()">Order Now</button>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <img src="images/logo.jpg" alt="Deshi Vibes by Sadia logo" class="brand-logo">
+  <p style="text-transform:uppercase; font-weight:800; color:var(--mustard);">Deshi Vibes by Sadia</p>
+  <p>Home-cooked South Asian food, made to order.</p>
+  <nav>
+    <ul style="display:flex; position:static; background:none; padding:0;">
+      <li><button class="navlink" onclick="showPage('home')">Home</button></li>
+      <li><button class="navlink" onclick="showPage('about')">About</button></li>
+      <li><button class="navlink" onclick="goToOrder()">Order Now</button></li>
+    </ul>
+  </nav>
+  <p style="margin-top:10px; opacity:.6; font-size:.8rem;">Menus &amp; pricing subject to change · Custom cake designs priced separately</p>
+</footer>
+
+<script>
+  function showPage(name){
+    document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+    document.getElementById('page-' + name).classList.add('active');
+    document.getElementById('navlist').classList.remove('open');
+    window.scrollTo(0,0);
+  }
+  function scrollToSection(id){
+    setTimeout(function(){
+      var el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth'});
+    }, 50);
+  }
+  function goToOrder(){
+    showPage('home');
+    scrollToSection('order-form');
+  }
+  function showTab(evt, id){
+    var wrap = evt.currentTarget.closest('.details-body');
+    wrap.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+    wrap.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+    wrap.querySelector('#'+id).classList.add('active');
+    evt.currentTarget.classList.add('active');
+  }
+
+  // ---------- ORDER BUILDER ----------
+  var MENU_DATA = {
+    specialMeals: {unit:'serving', items:[
+      {name:'Khichuri with egg masala', price:14},
+      {name:'Chicken biriyani', price:15},
+      {name:'Beef biriyani / beef tehari', price:18}
+    ]},
+    comfort: {unit:'lb', items:[
+      {name:'Begun bhorta', price:12},
+      {name:'Daal bhorta', price:12},
+      {name:'Loitta shutki bhorta', price:16},
+      {name:'Tomato bhorta', price:12},
+      {name:'Aloo bhorta', price:10},
+      {name:'Beef jhura mangsho', price:15},
+      {name:'Chicken masala', price:13},
+      {name:'Beef masala', price:20},
+      {name:'Daal (per box)', price:9},
+      {name:'Mixed veg with shrimp', price:13},
+      {name:'Shrimp with alu', price:13},
+      {name:'Pompano fish (whole)', price:13}
+    ]},
+    weekly: {unit:'box', items:[
+      {name:'Mix veg with shutki and egg fry', price:14},
+      {name:'Alu bhaji with daal and egg fry', price:13},
+      {name:'Lau with bhuter dal and chicken', price:12},
+      {name:'Chicken masala with daal', price:10},
+      {name:'Beef masala and daal', price:13},
+      {name:'Chicken kofta curry', price:14},
+      {name:'Sardine fish with veg and daal', price:12},
+      {name:'Egg masala and daal', price:10},
+      {name:'Alu chingri + daal', price:10},
+      {name:'Pompano fish and daal', price:15},
+      {name:'Mixed veg with chicken kebab and daal', price:14},
+      {name:'Begun bhorta + tomato bhorta', price:15},
+      {name:'Khichuri with egg masala (1 serving)', price:14}
+    ]},
+    desserts: {unit:'lb', items:[
+      {name:'Cheese pudding', price:15},
+      {name:'Payesh', price:20},
+      {name:'Malai cake', price:15},
+      {name:'Dudh shemai', price:20}
+    ]},
+    snacks: {unit:'piece', items:[
+      {name:'Dim porata', price:10},
+      {name:'Chicken kebab (10 pcs)', price:15}
+    ]}
+  };
+
+  var CAKE_FLAVOR_TIER = {
+    'Vanilla':'Classic', 'Strawberry':'Classic', 'Chocolate':'Classic', 'Orange':'Classic', 'Lemon':'Classic',
+    'Carrot':'Specialty', 'Black Forest':'Specialty', 'White Forest':'Specialty',
+    'Red Velvet with cheese frosting':'Premium', 'Rasmalai':'Premium',
+    'Red Velvet & Cheesecake Fusion':'Fusion'
+  };
+  var CAKE_TIER_PRICE = {
+    '8':{Classic:60, Specialty:65, Premium:70, Fusion:75},
+    '6':{Classic:35, Specialty:40, Premium:45, Fusion:50}
+  };
+  var BROWNIE_PRICE = {'Brownies':35, 'Cupcakes':40, 'Pull-Apart Cupcakes':45};
+
+  var cart = [];
+
+  function populateSelect(catKey){
+    var sel = document.getElementById('sel-' + catKey);
+    if(!sel) return;
+    MENU_DATA[catKey].items.forEach(function(it){
+      var opt = document.createElement('option');
+      opt.value = it.name;
+      opt.textContent = it.name + ' — $' + it.price + '/' + MENU_DATA[catKey].unit;
+      sel.appendChild(opt);
+    });
+  }
+  ['specialMeals','comfort','weekly','desserts','snacks'].forEach(populateSelect);
+
+  function showObPanel(evt, cat){
+    document.querySelectorAll('.ob-panel').forEach(function(p){ p.classList.remove('active'); });
+    document.querySelectorAll('.ob-tab').forEach(function(b){ b.classList.remove('active'); });
+    document.getElementById('ob-' + cat).classList.add('active');
+    evt.currentTarget.classList.add('active');
+  }
+
+  function showCakerySub(evt, sub){
+    document.querySelectorAll('.ob-subpanel').forEach(function(p){ p.classList.remove('active'); });
+    document.querySelectorAll('.ob-subtab').forEach(function(b){ b.classList.remove('active'); });
+    document.getElementById('cakery-' + sub).classList.add('active');
+    evt.currentTarget.classList.add('active');
+  }
+
+  function addFromCategory(catKey){
+    var sel = document.getElementById('sel-' + catKey);
+    var qtyInput = document.getElementById('qty-' + catKey);
+    var itemName = sel.value;
+    var qty = parseFloat(qtyInput.value) || 1;
+    var unit = MENU_DATA[catKey].unit;
+    var item = MENU_DATA[catKey].items.find(function(i){ return i.name === itemName; });
+    var lineTotal = item.price * qty;
+    cart.push({
+      desc: item.name + ' — ' + qty + ' ' + unit + (qty != 1 ? 's' : ''),
+      total: lineTotal
+    });
+    renderCart();
+  }
+
+  function addCake(){
+    var flavor = document.getElementById('sel-cakeFlavor').value;
+    var size = document.getElementById('sel-cakeSize').value;
+    var layers = document.getElementById('sel-cakeLayers').value;
+    var sizeLabel = document.getElementById('sel-cakeSize').selectedOptions[0].textContent;
+    var tier = CAKE_FLAVOR_TIER[flavor];
+    var price = CAKE_TIER_PRICE[size][tier];
+    cart.push({
+      desc: flavor + ' Cake — ' + sizeLabel + ', ' + layers + ' layer(s)',
+      total: price
+    });
+    renderCart();
+  }
+
+  function addBrownie(){
+    var item = document.getElementById('sel-brownieItem').value;
+    var dozens = parseFloat(document.getElementById('sel-brownieDozens').value);
+    var dozensLabel = document.getElementById('sel-brownieDozens').selectedOptions[0].textContent;
+    var total = BROWNIE_PRICE[item] * dozens;
+    cart.push({
+      desc: item + ' — ' + dozensLabel,
+      total: total
+    });
+    renderCart();
+  }
+
+  function removeCartItem(idx){
+    cart.splice(idx, 1);
+    renderCart();
+  }
+
+  function renderCart(){
+    var list = document.getElementById('cartList');
+    var emptyMsg = document.getElementById('cartEmpty');
+    var totalEl = document.getElementById('cartTotal');
+    if(cart.length === 0){
+      list.innerHTML = '<p class="cart-empty" id="cartEmpty">Nothing added yet — build your order above.</p>';
+      totalEl.textContent = '$0';
+      return;
+    }
+    var html = '';
+    var sum = 0;
+    cart.forEach(function(item, idx){
+      sum += item.total;
+      html += '<div class="cart-item"><span class="cart-item-info">' + item.desc + '</span><span class="cart-item-price">$' + item.total.toFixed(2).replace(/\.00$/,'') + '</span><button class="cart-item-remove" onclick="removeCartItem(' + idx + ')" aria-label="Remove">&times;</button></div>';
+    });
+    list.innerHTML = html;
+    totalEl.textContent = '$' + sum.toFixed(2).replace(/\.00$/,'');
+  }
+
+  function sendOrder(evt){
+    evt.preventDefault();
+    var name = document.getElementById('name').value;
+    var phone = document.getElementById('phone').value;
+    var notes = document.getElementById('notes').value;
+
+    var body = 'Name: ' + name + '\nContact: ' + phone + '\n\nOrder:\n';
+    if(cart.length === 0){
+      body += '(no items added — please describe your order in notes)\n';
+    } else {
+      cart.forEach(function(item){
+        body += '- ' + item.desc + ' ($' + item.total.toFixed(2).replace(/\.00$/,'') + ')\n';
+      });
+      var total = cart.reduce(function(s,i){ return s + i.total; }, 0);
+      body += '\nEstimated Total: $' + total.toFixed(2).replace(/\.00$/,'') + '\n';
+    }
+    if(notes){ body += '\nNotes: ' + notes; }
+    body += '\n\n(If you attached a cake design image, please remember to attach it manually — email links can\'t carry file attachments.)';
+
+    var mailto = 'mailto:youremail@example.com?subject=' + encodeURIComponent('New Order - Deshi Vibes') + '&body=' + encodeURIComponent(body);
+    window.location.href = mailto;
+    return false;
+  }
+
+
+  var reviewIndex = 0;
+  var reviewCards = document.querySelectorAll('.review-card');
+  var reviewCounter = document.getElementById('reviewCounter');
+  function nextReview(){
+    reviewCards[reviewIndex].classList.remove('active');
+    reviewIndex = (reviewIndex + 1) % reviewCards.length;
+    reviewCards[reviewIndex].classList.add('active');
+    reviewCounter.textContent = (reviewIndex + 1) + ' / ' + reviewCards.length;
+  }
+</script>
+
+</body>
+</html>
