@@ -826,8 +826,9 @@
             </div>
           </div>
         </div>
-<form class="contact-form" id="orderForm" action="https://api.web3forms.com/submit" method="POST">
+<form class="contact-form" id="orderForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
   <input type="hidden" name="access_key" value="ddc7a313-8b49-46a4-892e-e68a0f3c7c11">
+  <input type="hidden" name="subject" value="New Cake Order Request">
           <div><label for="name">Name</label><input type="text" id="name" name="name" placeholder="Your name" required></div>
           <div><label for="phone">Phone or email</label><input type="text" id="phone" name="phone" placeholder="How should we reach you?" required></div>
           <div><label for="notes">Additional notes</label><textarea id="notes" name="notes" placeholder="Delivery date, special requests, anything else"></textarea></div>
@@ -1065,31 +1066,6 @@
     list.innerHTML = html;
     totalEl.textContent = '$' + sum.toFixed(2).replace(/\.00$/,'');
   }
-
-  function sendOrder(evt){
-    evt.preventDefault();
-    var name = document.getElementById('name').value;
-    var phone = document.getElementById('phone').value;
-    var notes = document.getElementById('notes').value;
-
-    var body = 'Name: ' + name + '\nContact: ' + phone + '\n\nOrder:\n';
-    if(cart.length === 0){
-      body += '(no items added — please describe your order in notes)\n';
-    } else {
-      cart.forEach(function(item){
-        body += '- ' + item.desc + ' ($' + item.total.toFixed(2).replace(/\.00$/,'') + ')\n';
-      });
-      var total = cart.reduce(function(s,i){ return s + i.total; }, 0);
-      body += '\nEstimated Total: $' + total.toFixed(2).replace(/\.00$/,'') + '\n';
-    }
-    if(notes){ body += '\nNotes: ' + notes; }
-    body += '\n\n(If you attached a cake design image, please remember to attach it manually — email links can\'t carry file attachments.)';
-
-    var mailto = 'mailto:youremail@example.com?subject=' + encodeURIComponent('New Order - Deshi Vibes') + '&body=' + encodeURIComponent(body);
-    window.location.href = mailto;
-    return false;
-  }
-
 
   var reviewIndex = 0;
   var reviewCards = document.querySelectorAll('.review-card');
