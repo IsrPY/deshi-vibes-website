@@ -828,7 +828,8 @@
         </div>
 <form class="contact-form" id="orderForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
   <input type="hidden" name="access_key" value="ddc7a313-8b49-46a4-892e-e68a0f3c7c11">
-  <input type="hidden" name="subject" value="New Cake Order Request">
+  <input type="hidden" name="subject" value="New Order Request">
+  <input type="hidden" name="order_details" id="order_details">
           <div><label for="name">Name</label><input type="text" id="name" name="name" placeholder="Your name" required></div>
           <div><label for="phone">Phone or email</label><input type="text" id="phone" name="phone" placeholder="How should we reach you?" required></div>
           <div><label for="notes">Additional notes</label><textarea id="notes" name="notes" placeholder="Delivery date, special requests, anything else"></textarea></div>
@@ -1076,6 +1077,19 @@
     reviewCards[reviewIndex].classList.add('active');
     reviewCounter.textContent = (reviewIndex + 1) + ' / ' + reviewCards.length;
   }
+ document.getElementById('orderForm').addEventListener('submit', function(){
+  var orderText = '';
+  var orderTotal = 0;
+
+  cart.forEach(function(item){
+    orderText += item.desc + ' - $' + item.total.toFixed(2) + '\n';
+    orderTotal += item.total;
+  });
+
+  orderText += '\nEstimated Total: $' + orderTotal.toFixed(2).replace(/\.00$/,'');
+
+  document.getElementById('order_details').value = orderText;
+});
 </script>
 
 </body>
