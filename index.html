@@ -826,12 +826,12 @@
             </div>
           </div>
         </div>
-
-        <form class="contact-form" id="orderForm" onsubmit="return sendOrder(event)">
-          <div><label for="name">Name</label><input type="text" id="name" placeholder="Your name" required></div>
-          <div><label for="phone">Phone or email</label><input type="text" id="phone" placeholder="How should we reach you?" required></div>
-          <div><label for="notes">Additional notes</label><textarea id="notes" placeholder="Delivery date, special requests, anything else"></textarea></div>
-          <div><label for="cakeImage">Cake design reference (optional)</label><input type="file" id="cakeImage" accept="image/*"></div>
+<form class="contact-form" id="orderForm" action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="ddc7a313-8b49-46a4-892e-e68a0f3c7c11">
+          <div><label for="name">Name</label><input type="text" id="name" name="name" placeholder="Your name" required></div>
+          <div><label for="phone">Phone or email</label><input type="text" id="phone" name="phone" placeholder="How should we reach you?" required></div>
+          <div><label for="notes">Additional notes</label><textarea id="notes" name="notes" placeholder="Delivery date, special requests, anything else"></textarea></div>
+          <div><label for="cakeImage">Cake design reference (optional)</label><input type="file" id="cakeImage" name="attachment" accept="image/*"></div>
           <p class="ob-note">Your cart items above will be included automatically when you send this request.</p>
           <button type="submit" class="btn btn-solid">Send order request</button>
         </form>
