@@ -1077,7 +1077,7 @@
     reviewCards[reviewIndex].classList.add('active');
     reviewCounter.textContent = (reviewIndex + 1) + ' / ' + reviewCards.length;
   }
- document.getElementById('orderForm').addEventListener('submit', function(){
+ document.getElementById('orderForm').addEventListener('submit', function(e){
   var orderText = '';
   var orderTotal = 0;
 
