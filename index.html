@@ -49,7 +49,7 @@
     font-size:.68rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
     padding:5px 11px; border-radius:999px;
   }
-  .hero-photo .hero-content{position: relative; z-index: 2; max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; align-items: flex-start; text-align: left;}
+  .hero-photo .hero-content{position:relative; z-index:2; max-width:640px;}
   .hero-badge-logo{width:64px !important; height:64px !important; border-radius:50%; margin:0 auto 18px; object-fit:cover; border:3px solid var(--mustard); box-shadow:0 8px 22px rgba(0,0,0,.35); animation:logoRise 1.1s ease-out both;}
   @keyframes logoRise{ from{opacity:0; transform:translateY(30px);} to{opacity:1; transform:translateY(0);} }
   .hero-eyebrow{display:block; font-size:.95rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--mustard); margin-bottom:12px;}
@@ -59,11 +59,7 @@
   .hero-secondary{display:block; margin-top:14px; font-size:.85rem; color:rgba(243,229,208,.8); text-decoration:underline; background:none; border:none; cursor:pointer; font-family:'Arial',sans-serif;}
   .hero-badge-row{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:24px;}
   .hero-badge-row .badge-pill{display:flex; align-items:center; gap:5px; background:rgba(243,229,208,.14); border:1.5px solid rgba(243,229,208,.45); color:var(--cream); padding:5px 12px; border-radius:999px; font-size:.72rem; font-weight:600;}
-/* Hero video with maroon overlay */
-.hero-video-wrap{position: relative; width: 100%; padding-bottom: 56.25%;   /* 16:9 aspect ratio */ margin-top: 24px; border-radius: 16px; overflow: hidden;}
-.hero-video{position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;}
-/* Maroon overlay at 30% opacity */
-.hero-video-overlay{position: absolute; inset: 0; background: rgba(74,20,20,0.30);  /* maroon tint */ pointer-events: none;}
+
   section{padding:60px 24px;}
   .section-inner{max-width:1100px; margin:0 auto;}
   .section-head{text-align:center; margin-bottom:36px;}
@@ -115,8 +111,9 @@
   details.category-photo[open]{grid-column:1 / -1;}
   details.category-photo summary{list-style:none; cursor:pointer; display:flex; flex-direction:column; align-items:stretch; padding:0;}
   details.category-photo summary::-webkit-details-marker{display:none;}
-  .cat-photo-placeholder{width:100%; height:280px; flex:0 0 auto; overflow:hidden; padding:0; background:none; display:block; border-radius:16px 16px 0 0;}
+  .cat-photo-placeholder{width:100%; aspect-ratio:4/5; flex:0 0 auto; overflow:hidden; padding:0; background:var(--clay); display:block; border-radius:16px 16px 0 0;}
   .cat-photo-placeholder img{ width:100%; height:100%; display:block; object-fit:cover; object-position:center; border-radius:16px 16px 0 0;}
+  details.category-photo[open] .cat-photo-placeholder{aspect-ratio:unset; height:280px;}
   .cat-caption{width:100%; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:8px; padding:18px 20px;}
   .cat-caption .cat-icon{font-size:1.5rem;}
   .cat-caption-text{width:100%;}
@@ -124,7 +121,7 @@
   .cat-caption .cat-sub{display:block; font-size:.8rem; color:#7a5c47; font-weight:400; margin-top:4px; line-height:1.4;}
   .cat-toggle{background:var(--mustard); color:var(--maroon-deep); font-size:.78rem; font-weight:700; padding:7px 15px; border-radius:999px; white-space:nowrap;}
   @media (max-width:480px){
-    .cat-photo-placeholder{height:220px;}
+    details.category-photo[open] .cat-photo-placeholder{height:200px;}
   }
   details.category-photo[open] .cat-toggle::after{content:" \25B2";}
   details.category-photo:not([open]) .cat-toggle::after{content:" \25BC";}
@@ -228,6 +225,20 @@
     html{scroll-behavior:auto;}
     *{transition-duration:.001s !important; animation:none !important;}
   }
+
+  /* ---------- SCROLL FADE-UP ---------- */
+  .fade-up{opacity:0; transform:translateY(32px); transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1);}
+  .fade-up.is-visible{opacity:1; transform:translateY(0);}
+  .value-grid .fade-up:nth-child(2){transition-delay:.08s;}
+  .value-grid .fade-up:nth-child(3){transition-delay:.16s;}
+  .value-grid .fade-up:nth-child(4){transition-delay:.24s;}
+  .value-grid .fade-up:nth-child(5){transition-delay:.32s;}
+  .value-grid .fade-up:nth-child(6){transition-delay:.4s;}
+  .menu-photo-grid .fade-up:nth-child(2){transition-delay:.08s;}
+  .menu-photo-grid .fade-up:nth-child(3){transition-delay:.16s;}
+  .menu-photo-grid .fade-up:nth-child(4){transition-delay:.24s;}
+  .menu-photo-grid .fade-up:nth-child(5){transition-delay:.32s;}
+  .menu-photo-grid .fade-up:nth-child(6){transition-delay:.4s;}
 </style>
 </head>
 <body>
@@ -235,7 +246,7 @@
 <header>
   <div class="nav-wrap">
     <button class="brand" onclick="showPage('home')">
-      <img src="images/dvs-logo.png" alt="Deshi Vibes by Sadia logo" class="brand-logo">
+      <img src="images/logo.jpg" alt="Deshi Vibes by Sadia logo" class="brand-logo">
       <span style="text-transform:uppercase;">Deshi Vibes <span style="opacity:.7;font-weight:400;">by Sadia</span></span>
     </button>
     <button class="nav-toggle" aria-label="Toggle menu" onclick="document.getElementById('navlist').classList.toggle('open')">&#9776;</button>
@@ -252,35 +263,21 @@
 <!-- ============================================================ HOME ============================================================ -->
 <div id="page-home" class="page active">
 
-<section class="hero-photo">
-  <span class="photo-note">Hero photo/video goes here</span>
-  <div class="hero-content" style="text-align: left; align-items: flex-start;">
-    <img src="images/dvs-logo.png" alt="Deshi Vibes by Sadia logo" class="hero-badge-logo">
-    <span class="hero-eyebrow">Home-cooked South Asian cuisine</span>
-    <h1>Feel the Taste of Home</h1>
-    <button class="hero-cta" onclick="goToOrder()">Order Now</button>
-    <button class="hero-secondary" onclick="scrollToSection('menu')">or browse the full menu</button>
-
-    <div class="hero-badge-row">
-      <span class="badge-pill">&#9989; Food Handler Certified</span>
-      <span class="badge-pill">&#9770; 100% Halal</span>
-      <span class="badge-pill">&#127807; Healthy Environment</span>
+  <section class="hero-photo">
+    <span class="photo-note">Hero photo/video goes here</span>
+    <div class="hero-content">
+      <img src="images/logo.jpg" alt="Deshi Vibes by Sadia logo" class="hero-badge-logo">
+      <span class="hero-eyebrow">Home-cooked South Asian cuisine</span>
+      <h1>Feel the Taste of Home</h1>
+      <button class="hero-cta" onclick="goToOrder()">Order Now</button>
+      <button class="hero-secondary" onclick="scrollToSection('menu')">or browse the full menu</button>
+      <div class="hero-badge-row">
+        <span class="badge-pill">&#9989; Food Handler Certified</span>
+        <span class="badge-pill">&#9770; 100% Halal</span>
+        <span class="badge-pill">&#127807; Healthy Environment</span>
+      </div>
     </div>
-
-    <!-- Hero video with maroon overlay -->
-    <div class="hero-video-wrap">
-      <iframe
-        src="https://www.youtube.com/embed/PJX-1gsYcCg?loop=1&playlist=PJX-1gsYcCg"
-        title="Deshi Vibes kitchen video"
-        class="hero-video"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-      <div class="hero-video-overlay"></div>
-    </div>
-  </div>
-</section>
+  </section>
 
   <div class="leafvine-divider" aria-hidden="true">
     <svg viewBox="0 0 1200 90" preserveAspectRatio="none" role="presentation">
@@ -309,7 +306,7 @@
         <p>A few favorites, on offer right now.</p>
       </div>
 
-      <div class="specialty-row">
+      <div class="specialty-row fade-up">
         <div class="specialty-text">
           <h3>Beef Tehari</h3>
           <span class="offer-badge">5% OFF on 5 servings</span>
@@ -319,7 +316,7 @@
         <div class="specialty-image">Photo coming soon</div>
       </div>
 
-      <div class="specialty-row">
+      <div class="specialty-row fade-up">
         <div class="specialty-text">
           <h3>Chicken Roast with Pulao</h3>
           <span class="offer-badge">5% OFF on 5 servings</span>
@@ -329,7 +326,7 @@
         <div class="specialty-image">Photo coming soon</div>
       </div>
 
-      <div class="specialty-row">
+      <div class="specialty-row fade-up">
         <div class="specialty-text">
           <h3>Jalebi</h3>
           <span class="offer-badge">10% OFF on 5 servings</span>
@@ -427,12 +424,12 @@
         <h2>Why Choose Us</h2>
       </div>
       <div class="value-grid">
-        <div class="value-card"><span class="cat-icon"></span><h3>Food Handler Certified Cook</h3><p>Prepared under proper food safety training and certification.</p></div>
-        <div class="value-card"><span class="cat-icon"></span><h3>100% Halal</h3><p>Every dish is fully halal, no exceptions.</p></div>
-        <div class="value-card"><span class="cat-icon"></span><h3>Hygienic</h3><p>Cooked in a clean, hygienic home kitchen.</p></div>
-        <div class="value-card"><span class="cat-icon"></span><h3>Traditional Recipes</h3><p>Traditional South Asian recipes, made the real way.</p></div>
-        <div class="value-card"><span class="cat-icon"></span><h3>Made Fresh to Order</h3><p>Nothing pre-made, cooked when you order.</p></div>
-        <div class="value-card"><span class="cat-icon"></span><h3>Family-Run &amp; Handmade</h3><p>Small-batch, homemade, with care in every order.</p></div>
+        <div class="value-card fade-up"><span class="cat-icon"></span><h3>Food Handler Certified Cook</h3><p>Prepared under proper food safety training and certification.</p></div>
+        <div class="value-card fade-up"><span class="cat-icon"></span><h3>100% Halal</h3><p>Every dish is fully halal, no exceptions.</p></div>
+        <div class="value-card fade-up"><span class="cat-icon"></span><h3>Hygienic</h3><p>Cooked in a clean, hygienic home kitchen.</p></div>
+        <div class="value-card fade-up"><span class="cat-icon"></span><h3>Traditional Recipes</h3><p>Traditional South Asian recipes, made the real way.</p></div>
+        <div class="value-card fade-up"><span class="cat-icon"></span><h3>Made Fresh to Order</h3><p>Nothing pre-made, cooked when you order.</p></div>
+        <div class="value-card fade-up"><span class="cat-icon"></span><h3>Family-Run &amp; Handmade</h3><p>Small-batch, homemade, with care in every order.</p></div>
       </div>
     </div>
   </section>
@@ -467,7 +464,7 @@
 
       <div class="menu-photo-grid">
 
-        <details class="category-photo">
+        <details class="category-photo fade-up">
           <summary>
             <div class="cat-photo-placeholder"><img src="images/special-meals.jpg" alt="Special Meals — biriyani and rice dishes"></div>
             <div class="cat-caption">
@@ -485,7 +482,7 @@
           </div>
         </details>
 
-        <details class="category-photo">
+        <details class="category-photo fade-up">
           <summary>
             <div class="cat-photo-placeholder"><img src="images/comfort-dishes.jpg" alt="Comfort Dishes — bhorta and curries"></div>
             <div class="cat-caption">
@@ -512,7 +509,7 @@
           </div>
         </details>
 
-        <details class="category-photo">
+        <details class="category-photo fade-up">
           <summary>
             <div class="cat-photo-placeholder"><img src="images/weekly-meals.jpg" alt="Weekly Meals — portioned meal boxes"></div>
             <div class="cat-caption">
@@ -558,7 +555,7 @@
           </div>
         </details>
 
-        <details class="category-photo">
+        <details class="category-photo fade-up">
           <summary>
             <div class="cat-photo-placeholder"><img src="images/desserts.jpg" alt="Desserts — pudding and sweets"></div>
             <div class="cat-caption">
@@ -577,7 +574,7 @@
           </div>
         </details>
 
-        <details class="category-photo">
+        <details class="category-photo fade-up">
           <summary>
             <div class="cat-photo-placeholder"><img src="images/snacks.jpg" alt="Snacks — fried samosas"></div>
             <div class="cat-caption">
@@ -594,7 +591,7 @@
           </div>
         </details>
 
-        <details class="category-photo">
+        <details class="category-photo fade-up">
           <summary>
             <div class="cat-photo-placeholder"><img src="images/cakery-brownies.jpg" alt="Cakery and Brownies — fruit cake"></div>
             <div class="cat-caption">
@@ -1095,6 +1092,24 @@
     reviewCards[reviewIndex].classList.add('active');
     reviewCounter.textContent = (reviewIndex + 1) + ' / ' + reviewCards.length;
   }
+  // ---------- SCROLL FADE-UP ----------
+  (function(){
+    var targets = document.querySelectorAll('.fade-up');
+    if(!('IntersectionObserver' in window)){
+      targets.forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15, rootMargin:'0px 0px -40px 0px'});
+    targets.forEach(function(el){ observer.observe(el); });
+  })();
+
  document.getElementById('orderForm').addEventListener('submit', function(e){
   var orderText = '';
   var orderTotal = 0;
