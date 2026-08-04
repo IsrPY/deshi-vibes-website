@@ -19,7 +19,6 @@
 
   .leaf-bullet{width:15px !important; height:15px !important; fill:var(--green); vertical-align:-2px; margin:0 6px; flex-shrink:0;}
 
-
   /* ---------- NAV ---------- */
   header{position:fixed; top:0; left:0; right:0; z-index:50; background:transparent; color:var(--cream); transition:background .35s ease, box-shadow .35s ease;}
   header.scrolled{background:var(--maroon); box-shadow:0 2px 16px rgba(0,0,0,.28);}
@@ -127,7 +126,7 @@
   .offer-badge{display:inline-block; background:var(--mustard); color:var(--maroon-deep); font-size:.82rem; font-weight:800; padding:6px 14px; border-radius:999px; margin-bottom:16px; width:fit-content;}
   .specialty-desc{margin:0 0 24px; font-size:1.05rem; color:#5c4a3d; line-height:1.65;}
   .specialty-price{font-weight:800; color:var(--rust); font-size:1.55rem;}
-  .specialty-image{flex:1 1 50%; position:relative; min-height:400px; background:repeating-linear-gradient(135deg, var(--clay) 0 16px, #c98f56 16px 32px); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.75); font-size:.85rem; font-weight:700; text-align:center; padding:10px; text-transform:uppercase; letter-spacing:.03em;}
+  .specialty-image{flex:1 1 50%; position:relative; min-height:400px; background-color:var(--clay); background-size:cover; background-position:center;}
   .specialty-image::before{content:""; position:absolute; inset:0; background:linear-gradient(to right, var(--cream) 0%, rgba(243,229,208,0) 22%); pointer-events:none;}
   @media (max-width:680px){
     .specialty-row{flex-direction:column; min-height:0;}
@@ -335,26 +334,6 @@
       <span class="badge-pill">Healthy Environment</span>
     </div>
   </section>
-
-  <div class="leafvine-divider" aria-hidden="true">
-    <svg viewBox="0 0 1200 90" preserveAspectRatio="none" role="presentation">
-      <defs>
-        <pattern id="lv-1" width="150" height="90" patternUnits="userSpaceOnUse">
-          <path d="M0,45 C20,42 30,48 40,45 C55,42 70,48 75,45 C90,42 100,48 115,45 C130,42 140,48 150,45" stroke="#f3e5d0" stroke-width="1.5" fill="none" opacity="0.85"/>
-          <path d="M40,45 C25,38 25,13 40,6 C55,13 55,38 40,45 Z" stroke="#f3e5d0" stroke-width="1.8" fill="none"/>
-          <path d="M40,45 L40,6 M40,52.2 L33,48.2 M40,52.2 L47,48.2 M40,42.6 L31,38.6 M40,42.6 L49,38.6 M40,33 L30,27 M40,33 L50,27 M40,23.4 L32,17.4 M40,23.4 L48,17.4 M40,13.8 L36,7.8 M40,13.8 L44,7.8" stroke="#f3e5d0" stroke-width="0.9" fill="none"/>
-          <path d="M18,45 C18,40 14,37 10,39 C6,41 6,46 10,47 C13,48 15,46 14,44" stroke="#f3e5d0" stroke-width="1.4" fill="none"/>
-          <path d="M6,40 L9,44 L6,48 L3,44 Z" stroke="#f3e5d0" stroke-width="1" fill="none"/>
-          <path d="M115,45 C100,52 100,77 115,84 C130,77 130,52 115,45 Z" stroke="#f3e5d0" stroke-width="1.8" fill="none"/>
-          <path d="M115,45 L115,84 M115,52.2 L108,56.2 M115,52.2 L122,56.2 M115,42.6 L106,46.6 M115,42.6 L124,46.6 M115,33 L105,39 M115,33 L125,39 M115,23.4 L107,29.4 M115,23.4 L123,29.4 M115,13.8 L111,19.8 M115,13.8 L119,19.8" stroke="#f3e5d0" stroke-width="0.9" fill="none"/>
-          <path d="M137,45 C137,40 141,37 145,39 C149,41 149,46 145,47 C142,48 140,46 141,44" stroke="#f3e5d0" stroke-width="1.4" fill="none"/>
-          <path d="M150,40 L153,44 L150,48 L147,44 Z" stroke="#f3e5d0" stroke-width="1" fill="none"/>
-        </pattern>
-      </defs>
-      <rect width="1200" height="90" fill="url(#lv-1)"/>
-    </svg>
-  </div>
-
   <!-- ============ OUR SPECIALTIES ============ -->
   <section class="band-cream">
     <div class="section-inner">
@@ -370,7 +349,7 @@
           <p class="specialty-desc">A fragrant Bangladeshi rice dish slow-cooked with tender beef and aromatic spices.</p>
           <div class="specialty-price">$18/serve</div>
         </div>
-        <div class="specialty-image">Photo coming soon</div>
+        <div class="specialty-image" style="background-image:url('images/beef-tehari.jpg')"></div>
       </div>
 
       <div class="specialty-row fade-up">
@@ -380,7 +359,7 @@
           <p class="specialty-desc">Succulent roasted chicken served with flavorful pulao, perfect for celebrations.</p>
           <div class="specialty-price">$17/serve</div>
         </div>
-        <div class="specialty-image">Photo coming soon</div>
+        <div class="specialty-image" style="background-image:url('images/chicken-roast.jpg')"></div>
       </div>
 
       <div class="specialty-row fade-up">
@@ -390,30 +369,10 @@
           <p class="specialty-desc">Crispy, golden spirals soaked in fragrant sugar syrup — a timeless South Asian favorite.</p>
           <div class="specialty-price">$20/lb</div>
         </div>
-        <div class="specialty-image">Photo coming soon</div>
+        <div class="specialty-image" style="background-image:url('images/jalebi.jpg')"></div>
       </div>
     </div>
   </section>
-
-  <div class="leafvine-divider" aria-hidden="true">
-    <svg viewBox="0 0 1200 90" preserveAspectRatio="none" role="presentation">
-      <defs>
-        <pattern id="lv-2" width="150" height="90" patternUnits="userSpaceOnUse">
-          <path d="M0,45 C20,42 30,48 40,45 C55,42 70,48 75,45 C90,42 100,48 115,45 C130,42 140,48 150,45" stroke="#f3e5d0" stroke-width="1.5" fill="none" opacity="0.85"/>
-          <path d="M40,45 C25,38 25,13 40,6 C55,13 55,38 40,45 Z" stroke="#f3e5d0" stroke-width="1.8" fill="none"/>
-          <path d="M40,45 L40,6 M40,52.2 L33,48.2 M40,52.2 L47,48.2 M40,42.6 L31,38.6 M40,42.6 L49,38.6 M40,33 L30,27 M40,33 L50,27 M40,23.4 L32,17.4 M40,23.4 L48,17.4 M40,13.8 L36,7.8 M40,13.8 L44,7.8" stroke="#f3e5d0" stroke-width="0.9" fill="none"/>
-          <path d="M18,45 C18,40 14,37 10,39 C6,41 6,46 10,47 C13,48 15,46 14,44" stroke="#f3e5d0" stroke-width="1.4" fill="none"/>
-          <path d="M6,40 L9,44 L6,48 L3,44 Z" stroke="#f3e5d0" stroke-width="1" fill="none"/>
-          <path d="M115,45 C100,52 100,77 115,84 C130,77 130,52 115,45 Z" stroke="#f3e5d0" stroke-width="1.8" fill="none"/>
-          <path d="M115,45 L115,84 M115,52.2 L108,56.2 M115,52.2 L122,56.2 M115,42.6 L106,46.6 M115,42.6 L124,46.6 M115,33 L105,39 M115,33 L125,39 M115,23.4 L107,29.4 M115,23.4 L123,29.4 M115,13.8 L111,19.8 M115,13.8 L119,19.8" stroke="#f3e5d0" stroke-width="0.9" fill="none"/>
-          <path d="M137,45 C137,40 141,37 145,39 C149,41 149,46 145,47 C142,48 140,46 141,44" stroke="#f3e5d0" stroke-width="1.4" fill="none"/>
-          <path d="M150,40 L153,44 L150,48 L147,44 Z" stroke="#f3e5d0" stroke-width="1" fill="none"/>
-        </pattern>
-      </defs>
-      <rect width="1200" height="90" fill="url(#lv-2)"/>
-    </svg>
-  </div>
-
   <!-- ============ REVIEWS ============ -->
   <section>
     <div class="section-inner">
@@ -490,26 +449,6 @@
       </div>
     </div>
   </section>
-
-  <div class="leafvine-divider" aria-hidden="true">
-    <svg viewBox="0 0 1200 90" preserveAspectRatio="none" role="presentation">
-      <defs>
-        <pattern id="lv-3" width="150" height="90" patternUnits="userSpaceOnUse">
-          <path d="M0,45 C20,42 30,48 40,45 C55,42 70,48 75,45 C90,42 100,48 115,45 C130,42 140,48 150,45" stroke="#f3e5d0" stroke-width="1.5" fill="none" opacity="0.85"/>
-          <path d="M40,45 C25,38 25,13 40,6 C55,13 55,38 40,45 Z" stroke="#f3e5d0" stroke-width="1.8" fill="none"/>
-          <path d="M40,45 L40,6 M40,52.2 L33,48.2 M40,52.2 L47,48.2 M40,42.6 L31,38.6 M40,42.6 L49,38.6 M40,33 L30,27 M40,33 L50,27 M40,23.4 L32,17.4 M40,23.4 L48,17.4 M40,13.8 L36,7.8 M40,13.8 L44,7.8" stroke="#f3e5d0" stroke-width="0.9" fill="none"/>
-          <path d="M18,45 C18,40 14,37 10,39 C6,41 6,46 10,47 C13,48 15,46 14,44" stroke="#f3e5d0" stroke-width="1.4" fill="none"/>
-          <path d="M6,40 L9,44 L6,48 L3,44 Z" stroke="#f3e5d0" stroke-width="1" fill="none"/>
-          <path d="M115,45 C100,52 100,77 115,84 C130,77 130,52 115,45 Z" stroke="#f3e5d0" stroke-width="1.8" fill="none"/>
-          <path d="M115,45 L115,84 M115,52.2 L108,56.2 M115,52.2 L122,56.2 M115,42.6 L106,46.6 M115,42.6 L124,46.6 M115,33 L105,39 M115,33 L125,39 M115,23.4 L107,29.4 M115,23.4 L123,29.4 M115,13.8 L111,19.8 M115,13.8 L119,19.8" stroke="#f3e5d0" stroke-width="0.9" fill="none"/>
-          <path d="M137,45 C137,40 141,37 145,39 C149,41 149,46 145,47 C142,48 140,46 141,44" stroke="#f3e5d0" stroke-width="1.4" fill="none"/>
-          <path d="M150,40 L153,44 L150,48 L147,44 Z" stroke="#f3e5d0" stroke-width="1" fill="none"/>
-        </pattern>
-      </defs>
-      <rect width="1200" height="90" fill="url(#lv-3)"/>
-    </svg>
-  </div>
-
   <!-- ============ MENU ============ -->
   <section id="menu" class="band-cream">
     <div class="section-inner">
@@ -729,26 +668,6 @@
       </div>
     </div>
   </section>
-
-  <div class="leafvine-divider" aria-hidden="true">
-    <svg viewBox="0 0 1200 90" preserveAspectRatio="none" role="presentation">
-      <defs>
-        <pattern id="lv-4" width="150" height="90" patternUnits="userSpaceOnUse">
-          <path d="M0,45 C20,42 30,48 40,45 C55,42 70,48 75,45 C90,42 100,48 115,45 C130,42 140,48 150,45" stroke="#f3e5d0" stroke-width="1.5" fill="none" opacity="0.85"/>
-          <path d="M40,45 C25,38 25,13 40,6 C55,13 55,38 40,45 Z" stroke="#f3e5d0" stroke-width="1.8" fill="none"/>
-          <path d="M40,45 L40,6 M40,52.2 L33,48.2 M40,52.2 L47,48.2 M40,42.6 L31,38.6 M40,42.6 L49,38.6 M40,33 L30,27 M40,33 L50,27 M40,23.4 L32,17.4 M40,23.4 L48,17.4 M40,13.8 L36,7.8 M40,13.8 L44,7.8" stroke="#f3e5d0" stroke-width="0.9" fill="none"/>
-          <path d="M18,45 C18,40 14,37 10,39 C6,41 6,46 10,47 C13,48 15,46 14,44" stroke="#f3e5d0" stroke-width="1.4" fill="none"/>
-          <path d="M6,40 L9,44 L6,48 L3,44 Z" stroke="#f3e5d0" stroke-width="1" fill="none"/>
-          <path d="M115,45 C100,52 100,77 115,84 C130,77 130,52 115,45 Z" stroke="#f3e5d0" stroke-width="1.8" fill="none"/>
-          <path d="M115,45 L115,84 M115,52.2 L108,56.2 M115,52.2 L122,56.2 M115,42.6 L106,46.6 M115,42.6 L124,46.6 M115,33 L105,39 M115,33 L125,39 M115,23.4 L107,29.4 M115,23.4 L123,29.4 M115,13.8 L111,19.8 M115,13.8 L119,19.8" stroke="#f3e5d0" stroke-width="0.9" fill="none"/>
-          <path d="M137,45 C137,40 141,37 145,39 C149,41 149,46 145,47 C142,48 140,46 141,44" stroke="#f3e5d0" stroke-width="1.4" fill="none"/>
-          <path d="M150,40 L153,44 L150,48 L147,44 Z" stroke="#f3e5d0" stroke-width="1" fill="none"/>
-        </pattern>
-      </defs>
-      <rect width="1200" height="90" fill="url(#lv-4)"/>
-    </svg>
-  </div>
-
   <!-- ============ ORDER FORM ============ -->
   <section id="order-form" class="band-cream">
     <div class="section-inner">
